@@ -1,11 +1,18 @@
 from classes.banco import Banco
 import os
+from classes.usuario import Usuario
 
 ## TESTES
 
 banco = Banco()
+banco.abrirConexao()
 banco.criarTabela()
-## banco.criarUsuario('Arthur', '123456')
-## print(banco.lerUsuario('1'))
-## banco.atualizarUsuario('1', 'S', '78910')
-## banco.deletarUsuario('1')
+
+## ENVIAR PARA O MENU
+user = Usuario('Arthur', '123')
+if banco.verificarDados(user):
+    print('Usuario encontrado no banco!')
+else:
+    print('Usuario nao foi encontrado!')
+
+banco.fecharConexao

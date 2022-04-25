@@ -9,7 +9,7 @@ banco.abrirConexao()
 banco.criarTabela()
 
 ## ENVIAR PARA O MENU
-user = Usuario('Arthur', '123')
+user = Usuario('Carlos', '062')
 if banco.verificarDados(user):
     print('Usuario encontrado no banco!')
 else:

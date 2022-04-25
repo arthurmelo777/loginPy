@@ -49,4 +49,3 @@ class Banco:
         for v in r:
             if v[1] == usuario.user and v[2] == usuario.password:
                 return True
-            break

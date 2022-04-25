@@ -2,9 +2,7 @@ import classes.banco as Banco, classes.menu as Menu, classes.usuario as Usuario
 import os
 
 ## TESTES
-
 banco = Banco.Banco()
-banco.excluirTabela()
 banco.criarTabela()
 os.system('cls')
 
@@ -17,6 +15,12 @@ while opc != '0':
         opc = menu.cConta()
     if opc == '2':
         opc = menu.lConta()
+    if opc == '3':
+        opc = menu.aConta()
+    if opc == '4':
+        opc = menu.dConta()
+    if opc == '5':
+        opc = menu.logar()
     if opc == '0':
         opc = menu.sair()
 

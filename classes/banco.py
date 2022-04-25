@@ -34,13 +34,13 @@ class Banco:
     
     def atualizarUsuario(self, id, b, valor): ## ATUALIZAR USUARIO
         if self.verificarId(id):
-            if b == 'U':
+            if b == 'U' or b.upper() == 'USERNAME':
                 self.cursor.execute("UPDATE User SET nome = '"+valor+"' WHERE id = "+id+"")
-            elif b == 'S':
+            elif b == 'S' or b.upper() == 'SENHA':
                 self.cursor.execute("UPDATE User SET senha = '"+valor+"' WHERE id = "+id+"")
             self.banco.commit()
             return True
-        else: input('ID não encontrado, tente novamente! Aperte qqr tecla para continuar.')
+        else: input('O ID não encontrado ou os campos não coincidem, tente novamente! Aperte qqr tecla para continuar.')
     
     def deletarUsuario(self, id): ## DELETAR USUARIO
         if self.verificarId(id):
@@ -65,5 +65,4 @@ class Banco:
 
         for v in r:
             if str(v[0]) == id:
-                print(v[0])
                 return True

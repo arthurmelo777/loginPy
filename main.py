@@ -1,18 +1,17 @@
-from classes.banco import Banco
+import classes.banco as Banco, classes.menu as Menu, classes.usuario as Usuario
 import os
-from classes.usuario import Usuario
 
 ## TESTES
 
-banco = Banco()
-banco.abrirConexao()
+banco = Banco.Banco()
 banco.criarTabela()
+os.system('cls')
 
-## ENVIAR PARA O MENU
-user = Usuario('Carlos', '062')
-if banco.verificarDados(user):
-    print('Usuario encontrado no banco!')
-else:
-    print('Usuario nao foi encontrado!')
+## MENU
+menu = Menu.Menu()
+opc = menu.telaInicial()
+
+if opc == '1':
+    menu.cConta()
 
 banco.fecharConexao

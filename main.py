@@ -4,6 +4,7 @@ import os
 ## TESTES
 
 banco = Banco.Banco()
+banco.excluirTabela()
 banco.criarTabela()
 os.system('cls')
 
@@ -11,7 +12,12 @@ os.system('cls')
 menu = Menu.Menu()
 opc = menu.telaInicial()
 
-if opc == '1':
-    menu.cConta()
+while opc != '0':
+    if opc == '1':
+        opc = menu.cConta()
+    if opc == '2':
+        opc = menu.lConta()
+    if opc == '0':
+        opc = menu.sair()
 
 banco.fecharConexao

@@ -64,5 +64,6 @@ class Banco:
         r = self.cursor.fetchall()
 
         for v in r:
-            if v[0] == id:
+            if str(v[0]) == id:
+                print(v[0])
                 return True

@@ -6,6 +6,8 @@ class Menu:
     def __init__(self):
         self.bd = Banco()
 
+    ## MOSTRA TELA INICIAL DO MENU
+
     def telaInicial(self):
         print("""
 Bem vindo ao sistema de login, escolha uma opção abaixo: 
@@ -21,6 +23,8 @@ Bem vindo ao sistema de login, escolha uma opção abaixo:
 
         return self.opc
     
+    ## CRIAR CONTA
+
     def cConta(self):
         while True:
             print("""
@@ -34,3 +38,35 @@ Para criar sua conta digite, respectivamente, o seu nome de usuario e sua senha
                 input('Aperte qualquer tecla para continuar')
                 break
             os.system('cls')
+        self.opc = self.telaInicial()
+
+        return self.opc
+    
+    ## LER DADOS DE UMA CONTA
+
+    def lConta(self):
+        while True:
+            print('Digite o ID da conta que deseja consultar: ')
+            v = input()
+            os.system('cls')
+            u = self.bd.lerUsuario(v)
+            os.system('cls')
+
+            if u:
+                print(f"""
+ID: {u[0]}
+Username: {u[1]}
+Senha: {u[2]}
+                    """)
+                input('Aperte qqr tecla para continuar.')
+                break
+            os.system('cls')
+        self.opc = self.telaInicial()
+
+        return self.opc
+    
+    ## SAIR DO MENU
+
+    def sair(self):
+        input('Obrigado por usar nosso programa, até logo!  ')
+        os.system('cls')

@@ -16,3 +16,6 @@
 
 ### PASSO 3
 * Criar uma interface com o PySimpleGUI
+  1. Tela de login
+  2. Tela de cadastro
+  3. Tela de boas vindas

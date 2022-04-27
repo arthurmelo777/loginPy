@@ -1,4 +1,4 @@
-import classes.banco as Banco, classes.menu as Menu, classes.usuario as Usuario
+import classes.banco as Banco, classes.menu as Menu
 import os
 
 ## TESTES

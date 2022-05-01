@@ -20,6 +20,15 @@
   2. Tela de cadastro (*FEITO!*)  
   3. Tela de boas vindas (*FEITO!*)  
 
-  ### OBSERVAÇÕES
-  * Exclusão do Menu  
-  * Erro na tela de cadastro (*RESOLVIDO!*) - O erro estava na função banco.logar() não retornar False
+### PASSO 4
+* CRUD
+  1. Criar conta (*FEITO!*)  
+  2. Ler dados da conta  
+  3. Atualizar dados da conta  
+  4. Excluir conta(*FEITO!*)  
+  5. Logar(*FEITO!*)  
+  6. Sair (*FEITO!*) 
+
+### OBSERVAÇÕES
+* Exclusão do Menu  
+* Erro na tela de cadastro (*RESOLVIDO!*) - O erro estava na função banco.logar() não retornar False

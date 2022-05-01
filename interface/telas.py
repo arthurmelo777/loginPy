@@ -12,8 +12,8 @@ class Telas:
             [py.Input(key='nome')],
             [py.Text('Senha: ')],
             [py.Input(key='senha')],
-            [py.Button('Logar')],
-            [py.Button('Cadastrar-se')],
+            [py.Button('Logar'), py.Button('Cadastrar-se')],
+            [],
             [py.Text('', key='mensagem')]
         ]
 
@@ -27,8 +27,8 @@ class Telas:
             [py.Input(key='nome')],
             [py.Text('Senha: ')],
             [py.Input(key='senha')],
-            [py.Button('Cadastrar')],
-            [py.Button('Logar-se')]
+            [py.Button('Cadastrar'), py.Button('Logar-se')],
+            []
         ]
 
         return py.Window('Cadastro', layout=layout, finalize=True)
@@ -38,7 +38,8 @@ class Telas:
         layout = [
             [py.Text('LOGIN BEM SUCEDIDO')],
             [py.Text(f'Bem vindo {nome}')],
-            [py.Button('Voltar')]
+            [py.Button('Excluir conta')],
+            [py.Button('Sair')]
         ]
 
-        return py.Window('BemVindo', layout=layout, finalize=True)
+        return py.Window('Bem Vindo', layout=layout, finalize=True)

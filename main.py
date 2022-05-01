@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import classes.banco as Banco, classes.usuario as Usuario, interface.telas as Telas
 import PySimpleGUI as py
 
@@ -6,6 +7,7 @@ banco = Banco.Banco()
 banco.criarTabela()
 tela = Telas.Telas()
 user = Usuario.Usuario
+logado = NULL
 
 login, cadastro, bemVindo = tela.janela_login(), None, None
 
@@ -20,13 +22,12 @@ while True:
     elif window == login and event == 'Logar':
         nome, senha = values['nome'], values['senha']
         if banco.logar(user(nome, senha)):
+            logado = user(nome, senha)
             bemVindo = tela.boas_vindas(nome)
             login.hide()
     elif window == login and event == 'Cadastrar-se':
         cadastro = tela.janela_cadastro()
         login.hide()
-    elif window == login and banco.logar(user) == False:
-        values['mensagem'] = 'Login incorreto, tente novamente!'
     ## JANELA CADASTRO
     elif window == cadastro and event == py.WIN_CLOSED:
         break
@@ -42,7 +43,13 @@ while True:
     ## JANELA BOAS VINDAS
     elif window == bemVindo and event == py.WIN_CLOSED:
         break
-    elif window == bemVindo and event == 'Voltar':
+    elif window == bemVindo and event == 'Excluir conta':
+        if banco.logar(logado):
+            banco.excluirUsuario(user(nome, senha))
+            bemVindo.hide()
+            login = tela.janela_login()
+    elif window == bemVindo and event == 'Sair':
+        logado = NULL
         bemVindo.hide()
         login = tela.janela_login()
 

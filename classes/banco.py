@@ -19,7 +19,10 @@ class Banco:
     def criarUsuario(self, usuario): ## CRIAR USUARIO
         self.cursor.execute("INSERT INTO User VALUES (NULL, '"+usuario.user+"', '"+usuario.password+"')")
         self.banco.commit()
-        return True
+
+    def excluirUsuario(self, usuario): ## EXCLUIR USUARIO
+        self.cursor.execute("DELETE FROM User WHERE nome = '"+usuario.user+"' AND senha = '"+usuario.password+"'")
+        self.banco.commit()
     
     def logar(self, usuario): ## LOGAR
         if self.verificarDados(usuario): return True

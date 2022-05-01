@@ -22,4 +22,4 @@
 
   ### OBSERVAÇÕES
   * Exclusão do Menu  
-  * Erro na tela de cadastro *VERIFICAR*
+  * Erro na tela de cadastro (*RESOLVIDO!*) - O erro estava na função banco.logar() não retornar False

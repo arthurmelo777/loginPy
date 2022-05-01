@@ -23,6 +23,7 @@ class Banco:
     
     def logar(self, usuario): ## LOGAR
         if self.verificarDados(usuario): return True
+        else: return False
     
     ## VERIFICAR SE HÁ DADOS COMPATIVEIS NO BANCO
 

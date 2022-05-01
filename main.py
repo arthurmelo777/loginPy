@@ -1,4 +1,3 @@
-from pygame import WINDOWCLOSE
 import classes.banco as Banco, classes.usuario as Usuario, interface.telas as Telas
 import PySimpleGUI as py
 
@@ -36,15 +35,15 @@ while True:
         if banco.logar(user(nome, senha)) == False:
             banco.criarUsuario(user(nome, senha))
             cadastro.hide()
-            login.un_hide()
+            login = tela.janela_login()
     elif window == cadastro and event == 'Logar-se':
         cadastro.hide()
-        login.un_hide()
+        login = tela.janela_login()
     ## JANELA BOAS VINDAS
     elif window == bemVindo and event == py.WIN_CLOSED:
         break
     elif window == bemVindo and event == 'Voltar':
         bemVindo.hide()
-        login.un_hide()
+        login = tela.janela_login()
 
 banco.fecharConexao()

@@ -1,27 +1,50 @@
-import classes.banco as Banco, classes.menu as Menu
-import os
+from pygame import WINDOWCLOSE
+import classes.banco as Banco, classes.usuario as Usuario, interface.telas as Telas
+import PySimpleGUI as py
 
 ## TESTES
 banco = Banco.Banco()
 banco.criarTabela()
-os.system('cls')
+tela = Telas.Telas()
+user = Usuario.Usuario
 
-## MENU
-menu = Menu.Menu()
-opc = menu.telaInicial()
+login, cadastro, bemVindo = tela.janela_login(), None, None
 
-while opc != '0':
-    if opc == '1':
-        opc = menu.cConta()
-    if opc == '2':
-        opc = menu.lConta()
-    if opc == '3':
-        opc = menu.aConta()
-    if opc == '4':
-        opc = menu.dConta()
-    if opc == '5':
-        opc = menu.logar()
-    if opc == '0':
-        opc = menu.sair()
+while True:
+    window, event, values = py.read_all_windows()
 
-banco.fecharConexao
+    ## FECHAR JANELA
+
+    ## JANELA LOGIN
+    if window == login and event == py.WIN_CLOSED:
+        break
+    elif window == login and event == 'Logar':
+        nome, senha = values['nome'], values['senha']
+        if banco.logar(user(nome, senha)):
+            bemVindo = tela.boas_vindas(nome)
+            login.hide()
+    elif window == login and event == 'Cadastrar-se':
+        cadastro = tela.janela_cadastro()
+        login.hide()
+    elif window == login and banco.logar(user) == False:
+        values['mensagem'] = 'Login incorreto, tente novamente!'
+    ## JANELA CADASTRO
+    elif window == cadastro and event == py.WIN_CLOSED:
+        break
+    elif window == cadastro and event == 'Cadastrar':
+        nome, senha = values['nome'], values['senha']
+        if banco.logar(user(nome, senha)) == False:
+            banco.criarUsuario(user(nome, senha))
+            cadastro.hide()
+            login.un_hide()
+    elif window == cadastro and event == 'Logar-se':
+        cadastro.hide()
+        login.un_hide()
+    ## JANELA BOAS VINDAS
+    elif window == bemVindo and event == py.WIN_CLOSED:
+        break
+    elif window == bemVindo and event == 'Voltar':
+        bemVindo.hide()
+        login.un_hide()
+
+banco.fecharConexao()

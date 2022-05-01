@@ -16,6 +16,10 @@
 
 ### PASSO 3
 * Criar uma interface com o PySimpleGUI
-  1. Tela de login
-  2. Tela de cadastro
-  3. Tela de boas vindas
+  1. Tela de login (*FEITO!*)  
+  2. Tela de cadastro (*FEITO!*)  
+  3. Tela de boas vindas (*FEITO!*)  
+
+  ### OBSERVAÇÕES
+  * Exclusão do Menu  
+  * Erro na tela de cadastro *VERIFICAR*

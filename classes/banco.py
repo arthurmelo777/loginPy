@@ -17,37 +17,12 @@ class Banco:
         self.banco.commit()
 
     def criarUsuario(self, usuario): ## CRIAR USUARIO
-        if self.verificarDados(usuario):
-            input('Usuario já cadastrado, tente novamente! Aperte qqr tecla para continuar.')
-        else:
-            self.cursor.execute("INSERT INTO User VALUES (NULL, '"+usuario.user+"', '"+usuario.password+"')")
-            self.banco.commit()
-            return True
-
-    def lerUsuario(self, id): ## LER USUARIO
-        if self.verificarId(id):
-            self.cursor.execute("SELECT * FROM User WHERE id = "+id+"")
-            r = self.cursor.fetchall()
-
-            return r[0]
-        else: input('ID não encontrado, tente novamente! Aperte qqr tecla para continuar.')
+        self.cursor.execute("INSERT INTO User VALUES (NULL, '"+usuario.user+"', '"+usuario.password+"')")
+        self.banco.commit()
+        return True
     
-    def atualizarUsuario(self, id, b, valor): ## ATUALIZAR USUARIO
-        if self.verificarId(id):
-            if b == 'U' or b.upper() == 'USERNAME':
-                self.cursor.execute("UPDATE User SET nome = '"+valor+"' WHERE id = "+id+"")
-            elif b == 'S' or b.upper() == 'SENHA':
-                self.cursor.execute("UPDATE User SET senha = '"+valor+"' WHERE id = "+id+"")
-            self.banco.commit()
-            return True
-        else: input('O ID não encontrado ou os campos não coincidem, tente novamente! Aperte qqr tecla para continuar.')
-    
-    def deletarUsuario(self, id): ## DELETAR USUARIO
-        if self.verificarId(id):
-            self.cursor.execute("DELETE FROM User WHERE id = "+id+"")
-            self.banco.commit()
-            return True
-        else: input('ID não encontrado, tente novamente! Aperte qqr tecla para continuar.')
+    def logar(self, usuario): ## LOGAR
+        if self.verificarDados(usuario): return True
     
     ## VERIFICAR SE HÁ DADOS COMPATIVEIS NO BANCO
 
@@ -57,12 +32,4 @@ class Banco:
 
         for v in r:
             if (v[1] == usuario.user and v[2] == usuario.password) or v[1] == usuario.user:
-                return True
-    
-    def verificarId(self, id):
-        self.cursor.execute("SELECT * FROM User")
-        r = self.cursor.fetchall()
-
-        for v in r:
-            if str(v[0]) == id:
                 return True

@@ -35,5 +35,5 @@ class Banco:
         r = self.cursor.fetchall()
 
         for v in r:
-            if (v[1] == usuario.user and v[2] == usuario.password) or v[1] == usuario.user:
+            if (str(v[1]).upper() == str(usuario.user).upper() and v[2] == usuario.password) or v[1] == usuario.user:
                 return True

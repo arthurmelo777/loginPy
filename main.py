@@ -25,6 +25,8 @@ while True:
             logado = user(nome, senha)
             bemVindo = tela.boas_vindas(nome)
             login.hide()
+        else:
+            window['mensagem'].update('Senha ou usuario incorretos! Tente novamente.')
     elif window == login and event == 'Cadastrar-se':
         cadastro = tela.janela_cadastro()
         login.hide()
